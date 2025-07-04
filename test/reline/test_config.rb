@@ -18,6 +18,7 @@ class Reline::Config::Test < Reline::TestCase
 
   def teardown
     Dir.chdir(@pwd)
+    puts $LOADED_FEATURES.find {|f| f.end_with?("fileutils.rb") }
     FileUtils.rm_rf(@tmpdir)
     Reline.test_reset
     @config.reset
